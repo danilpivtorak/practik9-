@@ -1,0 +1,30 @@
+#include <iostream>
+
+int minSteps(int x, int y) {
+    if (y <= x) {
+        return x - y;
+    }
+
+    if (y == x + 1) {
+        return 1;
+    }
+
+    if (y % 2 == 0) {
+        return 1 + minSteps(x, y / 2);
+    } else {
+        return 1 + minSteps(x, y + 1);
+    }
+}
+
+int main() {
+    int x, y;
+    std::cout << "Введіть значення x: ";
+    std::cin >> x;
+    std::cout << "Введіть значення y: ";
+    std::cin >> y;
+
+    int steps = minSteps(x, y);
+    std::cout << "Мінімальна кількість кроків: " << steps << std::endl;
+
+    return 0;
+}
